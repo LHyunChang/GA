@@ -338,6 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSlotNum: 0
   nickName: 
+  classNum: 0
   level: 0
   exp: 0
   maxhp: 0
@@ -353,9 +354,6 @@ MonoBehaviour:
   questCurCnt: 0
   questMaxCnt: 0
   goalTxt: 
-  questCompleted: 0
-  questDoing: 0
-  tutoIsFirst: 0
   slots:
   - {fileID: 997102000}
   - {fileID: 2107641726}
@@ -5513,6 +5511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d036e4551422a7a4eb1984a9720154bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  os: {fileID: 0}
   btnSound: {fileID: 8300000, guid: 93873ba005ba08d458453d67ffaa878c, type: 3}
   aP_qSound: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
   aP_eSound: {fileID: 8300000, guid: c9bb4171cafd3dd47829336ea4c8d988, type: 3}
@@ -5526,6 +5525,11 @@ MonoBehaviour:
   mP_eSound: {fileID: 8300000, guid: adcac75087a17704ca6c0c3b15bc3aa5, type: 3}
   mP_rSound: {fileID: 8300000, guid: 34f9cbd28a9740349b6cc2f5e280dda3, type: 3}
   mP_normalAtkSound: {fileID: 0}
+  bossFire: {fileID: 0}
+  swordPattern: {fileID: 0}
+  healthUpPattern: {fileID: 0}
+  spinPattern: {fileID: 0}
+  groundCrush: {fileID: 0}
 --- !u!4 &1896200903
 Transform:
   m_ObjectHideFlags: 0

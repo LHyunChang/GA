@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
     private static AudioManager instance;
-
+    public GameObject os;
     public static AudioManager Instance
     {
         get
@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip chaosMusic;
     public AudioClip raidMusic;
     public AudioClip btnSound;
-    private AudioSource audioSource;
+    private AudioSource audioSource; 
 
     [Header("PlayerSkillSound")]
     public AudioClip aP_qSound;

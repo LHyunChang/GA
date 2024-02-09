@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RaidGroundOner : MonoBehaviour
-{
+{   
     public MeshRenderer ground;
     public MeshRenderer dissol;
     public GameObject Effect;
@@ -23,7 +23,7 @@ public class RaidGroundOner : MonoBehaviour
             StartCoroutine(Delay());
             StartCoroutine(Delay2());
         }
-    }
+    } 
         IEnumerator Delay()
         {
             yield return new WaitForSeconds(2f);
