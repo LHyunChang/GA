@@ -21,8 +21,7 @@ public class SpawnScipt : MonoBehaviourPunCallbacks
     {
         int curSlotNum = SelectSlot.slotNum;
         int classNum = PlayerPrefs.GetInt($"{curSlotNum}_ClassNum");
-        Debug.Log(classNum);
-        Debug.Log("spawnScriptø°º≠ curSlotNum¿∫ "+curSlotNum);
+
         if (PhotonNetwork.IsConnected)
         {
             Transform[] points = GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>();

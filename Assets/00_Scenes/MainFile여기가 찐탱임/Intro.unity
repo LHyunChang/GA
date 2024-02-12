@@ -298,9 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cd395a49bc67c4c983f03c107d08a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  password: 
   userIDInput: {fileID: 45076149}
-  outputText: {fileID: 0}
 --- !u!4 &107412867
 Transform:
   m_ObjectHideFlags: 0

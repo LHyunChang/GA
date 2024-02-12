@@ -16,10 +16,7 @@ public class SelectChar : MonoBehaviour
 
     public void OnClickCharacterBtn()
     {
-        // 해당 버튼의 character를 현재 스크립트의 currentCharacter에 할당
         currentCharacter = character.ToString();
-
-        // 슬롯번호를 다른스크립트에 넘겨주기
         switch (currentCharacter)
         {
             case "Warrior":
@@ -34,8 +31,5 @@ public class SelectChar : MonoBehaviour
             default:
                 break;
         }
-
-        // 할당된 직업 확인
-        Debug.Log("Selected Character: " + currentCharacter);
     }
 }

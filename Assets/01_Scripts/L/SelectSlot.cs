@@ -16,9 +16,7 @@ public class SelectSlot : MonoBehaviour
 
     public void OnClickSlotBtn()
     {
-        // 해당 버튼의 slot을 현재 스크립트의 currentSlot에 할당
         currentSlot = slot.ToString();
-        // 슬롯번호를 다른스크립트에 넘겨주기
         switch (currentSlot)
         {
             case "Slot0":
@@ -33,7 +31,5 @@ public class SelectSlot : MonoBehaviour
             default:
                 break;
         }
-        // 할당된 슬롯번호 확인
-        Debug.Log("Selected Slot: " + currentSlot);
     }
 }

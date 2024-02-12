@@ -6,34 +6,29 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Linq;
 
-public class ChatManager : MonoBehaviourPunCallbacks, IPunObservable
+public class ChatManager : MonoBehaviourPunCallbacks
 {
     public List<string> chatList = new List<string>();
 
-    public Text chatLog; // viewport에 채팅로그
-    //public Text chatterList; // 채터리스트
-    public InputField inputChat; // 인풋필드
+    public Text chatLog;
+    public InputField inputChat;
     public ScrollRect scrollRect;
-    //public string chatters;
 
     public Text nickNameTxt;
 
     public PhotonView pv;
     public Player player;
-    // 여기 위에가 추가한것. 현창
 
     private void Start()
     {
         pv = GetComponent<PhotonView>();
         player = GetComponent<Player>();
-        // 여기 위에가 추가한것. 현창
 
         GameObject canvasObj = GameObject.Find("WorldCanvas");
         GameObject backChSelect = canvasObj.transform.Find("BackChSelect_Chat").gameObject;
         GameObject chattingBox = backChSelect.transform.Find("ChattingBox").gameObject;
         scrollRect = chattingBox.GetComponentInChildren<ScrollRect>();
 
-        //chatterList = chattingBox.GetComponentInChildren<Text>();
         inputChat = chattingBox.GetComponentInChildren<InputField>();
         chatLog = scrollRect.content.GetComponentInChildren<Text>();
 
@@ -48,8 +43,6 @@ public class ChatManager : MonoBehaviourPunCallbacks, IPunObservable
 
     public void Update()
     {
-        //ChatterUpdate();
-
         if (pv.IsMine)
         {
             if (!inputChat.isFocused)
@@ -70,7 +63,6 @@ public class ChatManager : MonoBehaviourPunCallbacks, IPunObservable
         if (inputChat.text.Trim().Equals(""))
         {
             Debug.Log("채팅창 Empty, 채팅창을 비활성화 합니다");
-            // 채팅창 비어있으니 비활성화
             inputChat.Select();
             inputChat.enabled = false;
             return;
@@ -84,22 +76,6 @@ public class ChatManager : MonoBehaviourPunCallbacks, IPunObservable
             inputChat.text = "";
         }
     }
-
-    //void ChatterUpdate()
-    //{
-    //    if (pv.IsMine)
-    //    {
-    //        string[] playerList = PhotonNetwork.PlayerList.Select(p => p.NickName).ToArray();
-    //        string concatenatedPlayerList = string.Join("\n", playerList); // 들어온 순서대로 출력
-    //        photonView.RPC("SyncChatterList", RpcTarget.AllBuffered, concatenatedPlayerList);
-    //    }
-    //}
-
-    //[PunRPC]
-    //public void SyncChatterList(string playerList)
-    //{
-    //    chatterList.text = playerList;
-    //}
 
     [PunRPC]
     public void ReceiveMsg(string msg)
@@ -143,16 +119,4 @@ public class ChatManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
     #endregion
-    // IPunObservable 구현
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            // 여기서는 통신 메시지를 보낼 필요가 없으므로 아무 작업도 하지 않습니다.
-        }
-        else
-        {
-            // 여기서는 통신 메시지를 받을 필요가 없으므로 아무 작업도 하지 않습니다.
-        }
-    }
 }

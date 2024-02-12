@@ -5,7 +5,6 @@ using UnityEngine;
 public class DataMgrDontDestroy : MonoBehaviour
 {
     public static DataMgrDontDestroy _instance;
-    public bool playerDie = false;
     public static DataMgrDontDestroy Instance
     {
         get
@@ -20,6 +19,7 @@ public class DataMgrDontDestroy : MonoBehaviour
 
     #region 플레이어의 정보를 저장하는 변수
     [Header("플레이어의 정보")]
+    public bool playerDie = false;
     public string nickName;
     public int classNum; //0:전사, 1:거너, 2:법사
     public int level;
@@ -112,7 +112,7 @@ public class DataMgrDontDestroy : MonoBehaviour
         set { maxhp = value; }
     }
 
-    // 현재HP?
+    // 현재HP
     public float Hp
     {
         get { return hp; }
@@ -140,14 +140,14 @@ public class DataMgrDontDestroy : MonoBehaviour
         set { criDamage = value; }
     }
     
-    // 보유골드
+    // 보유 골드
     public int UserGold
     {
         get { return userGold; }
         set { userGold = value; }
     }
 
-    // 보유재화
+    // 보유 재료
     public int UserMaterial
     {
         get { return userMateiral; }
@@ -224,10 +224,6 @@ public class DataMgrDontDestroy : MonoBehaviour
     {
         int slotNum = SelectSlot.slotNum;
         Debug.Log("현재 슬롯넘버는 : "+slotNum);
-        //PlayerPrefs.SetString($"SlotNum_{slotNum}", slotNum.ToString());
-        // 주석부분은 필요없을거같은데 게임내에서 변하는 정보가 아님
-        //PlayerPrefs.SetString($"{slotNum}_Class", className);
-        //PlayerPrefs.SetInt($"{slotNum}_ClassNum", classNum);
         #region 캐릭터 정보 저장
         PlayerPrefs.SetString($"{slotNum}_NickName", NickName);
         PlayerPrefs.SetInt($"{slotNum}_Level", Level);

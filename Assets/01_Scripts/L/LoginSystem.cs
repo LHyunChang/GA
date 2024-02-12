@@ -6,12 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LoginSystem : MonoBehaviour
 {
-    public static string userEmail;
-    public string password;
     public InputField userIDInput;
-    //public InputField pwInput;
-
-    public Text outputText;
 
     private void Start()
     {
@@ -19,14 +14,12 @@ public class LoginSystem : MonoBehaviour
     }
     public void OnClickCreateBtn()
     {
-        Debug.Log("회원가입버튼 누름");
         if (string.IsNullOrEmpty(userIDInput.text))
         {
             Debug.Log("userID를 입력해주세요!");
         }
         else
         {
-            // PlayerPrefs에 userID 저장
             PlayerPrefs.SetString("UserID", userIDInput.text);
             PlayerPrefs.Save();
         }
@@ -34,7 +27,6 @@ public class LoginSystem : MonoBehaviour
 
     public void OnClickLoginBtn()
     {
-        Debug.Log("로그인버튼 누름");
         if (string.IsNullOrEmpty(userIDInput.text))
         {
             Debug.Log("userID를 입력해주세요!");

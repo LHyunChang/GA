@@ -39,8 +39,6 @@ public class DungeonLoadManager : MonoBehaviourPunCallbacks
         roomName.text = $"{CurDunGeonInfoMaker()}  {CurDunGeonLevelMaker()}";
         if (dataMgrDontDestroy.DungeonSortIdx == 0)
             roomName.text = "마을로 돌아가는 중입니다 . . .";
- 
-
     }
 
     // 마을로가고싶으면  던전에서 나갈때 dataMgrDontDestroy.dungeonSortIdx를 0으로 하고나서 로딩씬에 오면된다.
