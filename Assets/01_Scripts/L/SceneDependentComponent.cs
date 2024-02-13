@@ -10,17 +10,14 @@ public class SceneDependentComponent : MonoBehaviour
     void Awake()
     {
         componentA = GetComponent<ChatManager>();
-        // 현재 씬 이름 가져오기
         string currentSceneName = SceneManager.GetActiveScene().name;
-        Debug.Log("현재 씬 이름 : "+currentSceneName);
 
-        // 현재 씬에 따라 컴포넌트 A와 B를 활성화 또는 비활성화
         if (currentSceneName == "Town" || currentSceneName == "Raid")
         {
             componentA.enabled = true;
 
         }
-        else // 홈이 아닐때, 솔로던전이나 레이드던전일때
+        else
         {
             componentA.enabled = false;
 

@@ -94,7 +94,6 @@ public class ChatManager : MonoBehaviourPunCallbacks
                 {
                     if (inputChat.enabled == false)
                     {
-                        Debug.Log("enter키 누름. 채팅창활성화 합니다..");
                         inputChat.enabled = true;
                         inputChat.ActivateInputField();
 
@@ -104,12 +103,10 @@ public class ChatManager : MonoBehaviourPunCallbacks
                     {
                         if (!inputChat.isFocused)
                         {
-                            Debug.Log("enter키 누름. Focused 가지고있음=깜빡이고있음=메세지입력가능");
                             OnClickSendBtn();
                         }
                         else
                         {
-                            Debug.Log("enter키 누름. Focused 가지고있지않음=깜빡이지않음=메세지입력불가");
                             inputChat.ActivateInputField();
                         }
                     }

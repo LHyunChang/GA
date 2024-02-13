@@ -38,58 +38,29 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 
     #region 포톤 콜백 함수
-    // 포톤 서버에 접속 후 호출되는 콜백 함수
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected to Master!");
-        Debug.Log($"PhotonNetwork.InLobby = {PhotonNetwork.InLobby}");
         PhotonNetwork.JoinLobby();
-    }
-
-    // 로비에 접속 후 호출되는 콜백 함수
-    public override void OnJoinedLobby()
-    {
-        Debug.Log($"PhotonNetwork.InLobby = {PhotonNetwork.InLobby}");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        Debug.Log("방 참가실패");
-        Debug.Log($"JoinRoom Failed {returnCode}:{message}");
         MakeHome();
     }
 
-    // 룸 생성이 완료된 후 호출되는 콜백 함수
-    public override void OnCreatedRoom()
-    {
-        Debug.Log("Created Room");
-        Debug.Log($"Create Room Name = {PhotonNetwork.CurrentRoom.Name}");
-    }
-    // 룸에 입장한 후 호출되는 콜백 함수
     public override void OnJoinedRoom()
     {
-        Debug.Log($"PhotonNetwork.InRoom = {PhotonNetwork.InRoom}");
-        Debug.Log($"Player Count = {PhotonNetwork.CurrentRoom.PlayerCount}");
-
-        foreach (var player in PhotonNetwork.CurrentRoom.Players)
-        {
-            Debug.Log($"{player.Value.NickName} , {player.Value.ActorNumber}");
-        }
-
         if (PhotonNetwork.IsMasterClient)
         {
-            Debug.Log("MasterClient is LoadLevel 실행");
             PhotonNetwork.LoadLevel("Town");
         }
     }
     #endregion
 
     #region UI_BUTTON_EVENT
-    //유저명을 설정하는 로직
     public void SetUserId()
     {
         slotNum = SelectSlot.slotNum;
-        Debug.Log("SlotNum : " + slotNum);
         switch (slotNum)
         {
             case 0:
@@ -121,24 +92,20 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void JoinHome()
     {
-        Debug.Log("JoinHome 실행");
         PhotonNetwork.JoinRoom("Room_Home");
     }
 
     public void MakeHome()
     {
-        Debug.Log("MakeHome 실행");
-
-        // 룸의 속성 정의
         RoomOptions ro = new RoomOptions();
-        ro.MaxPlayers = 20;     // 룸에 입장할 수 있는 최대 접속자 수
-        ro.IsOpen = true;       // 룸의 오픈 여부
-        ro.IsVisible = true;    // 로비에서 룸 목록에 노출시킬 여부
+        ro.MaxPlayers = 20;
+        ro.IsOpen = true;
+        ro.IsVisible = true;
 
         PhotonNetwork.CreateRoom("Room_Home", ro);
     }
 
-    public void OnClickGoIntroBtn() // 연결끊고 인트로씬으로가기
+    public void OnClickGoIntroBtn()
     {
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("Intro");
